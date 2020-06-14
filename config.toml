@@ -1,0 +1,69 @@
+baseurl = "https://juan-blog.github.io"
+languageCode = "es"
+theme="archie"
+copyright = "Juan Castro"
+# Code Highlight
+pygmentsstyle = "monokai"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+#defaultContentLanguageInSubdir = true
+paginate=6 # articles per page
+DefaultContentLanguage = "es"
+
+[params]
+	mode="light"
+	featherIconsCDN=false
+	#subtitle = "Minimal and Clean [blog theme for Hugo](https://github.com/athul/archie)"
+
+# Social Tags
+
+
+[languages]
+  [languages.en]
+    title = "El blog de Juan"
+    languageName = "Read in english"
+    weight = 2
+  [languages.es]
+    title = "El blog de Juan"
+    languageName = "Leer en español"
+    weight = 1
+# Main menu Items
+[[languages.en.menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[languages.en.menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
+
+[[languages.en.menu.main]]
+name = "About"
+url = "/about"
+weight = 3
+
+[[languages.en.menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 4
+
+[[languages.es.menu.main]]
+name = "Inicio"
+url = "/es"
+weight = 1
+
+[[languages.es.menu.main]]
+name = "Todos los posts"
+url = "/posts"
+weight = 2
+
+[[languages.es.menu.main]]
+name = "Acerca"
+url = "/about"
+weight = 3
+
+[[languages.es.menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 4

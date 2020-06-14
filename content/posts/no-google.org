@@ -1,0 +1,110 @@
+#+title: 3 meses sin Google en mi Android, ¿Cómo han sido?
+#+date: 2019-07-25
+#+draft: false
+#+tags[]: android, google
+
+El 17 de abril, hace aproximadamente 3 meses, decidí instalar LineageOS 14 en mi /smartphone/, un humilde Samsung Core 2 que la comunidad ha mantenido vivo para llevar a él Android 7, a pesar que Samsung lo dejó en Android 4.4.2. Durante la instalación decidí no instalar las Gapps, las aplicaciones de Google con el fin de ahorrar (mucho) espacio y recursos, además de experimentar la vida sin Google, esto antes que el tema fuera puesto en al mesa por Huawei. 
+
+¿Cómo ha sido? ¿Ha sido imposible de usar? ¿Sólo sirve para llamadas? La verdad es que no. He reemplazado la mayoría de las aplicaciones que usaba con alternativas libres, mucho más ligeras pero no por ello menos poderosas, y siento que mi teléfono funciona mejor ahora que cuando estaba lleno del bloatware de Google. A continuación mencionaré que alternativas uso ahora y mi experiencia con ellas.
+
+*** Reemplazando Play Store
+El primer paso fue reemplazar la tienda de apps de Google, que obviamente no tenía disponible. Decidí instalar 3 apps:
+
+- [[https://www.f-droid.org/][F-droid]]: La primer "tienda" es F-droid, posee un catálogo de aplicaciones libres y me permite descubrir, instalar y actualizar aplicaciones. Esta es mi primera opción cuando busco aplicaciones y donde bajo la enorme mayoría de ellas.
+
+- [[https://f-droid.org/en/packages/com.aurora.store/][Aurora Store]]: Una alternativa a Play Store, se conecta a Google utilizando credenciales anónimas y permite bajar aplicaciones de Play Store. Tiene una interfaz mucho más agradable que la app de Google y además permite ver los trackers que posee la aplicación que abrimos. Las apps de paga no podremos bajarlas a menos que usemos nuestras credenciales. La uso para aquellas apps que necesito y tristemente solo están en Play Store.
+
+- [[https://labs.xda-developers.com/][XDA Labs]]: Nacida en XDA, ofrece varias aplicaciones desarrolladas por usuarios del foro, además permite acceder a los foros y tiene una sección para módulos Xposed. Casi no la uso pues su catálogo es algo limitado, pero hay algunas apps interesantes ahí.
+
+Con mis nuevas y flamantes tiendas fue momento de buscar alternativas para varias de las aplicaciones que usaba.
+
+*** Reemplazando Nova Launcher
+Durante varios años, Nova fue mi launcher por defecto, siempre volvía a él después de unos días u horas experimentando en otros, pero ahora no podía volver, al menos no a la versión de pago que compré hace unos años y sin la cual Nova pierde todo su potencial.
+
+Tras ver las alternativas disponibles decidí decantarme por *KISS Launcher* [[https://f-droid.org/en/packages/fr.neamar.kiss/][(F-droid)]] un lanzador minimalista, sencillo y que no consume casi recursos, pero con algunas opciones bastante interesantes. Su interfaz me gustó mucho aunque tuve que acostumbrarme a vivir con un solo widget y sin mil iconos en la pantalla de inicio; en consecuencia mi inicio se ve mucho más limpio ahora y sin tantos iconos que jamás uso.
+
+*** Reemplazando Youtube
+Youtube es quizá la aplicación que más usaba, pero sin los Servicios de Google se niega a funcionar. Una opción era usar un navegador pero la experiencia es algo negativa. La alternativa la encontré en *NewPipe* [[https://f-droid.org/en/packages/org.schabi.newpipe/][(F-droid)]], una aplicación para navegar youtube sin necesidad de una cuenta, solo hay que importar nuestra lista de subscripciones. 
+
+NewPipe permite ver comentarios (mas no comentar), ver videos en ventana flotante dentro y fuera de la aplicación, poner videos en segundo plano, descargar video y audio y varias otras funciones que la aplicación oficial no tiene, como diferentes velocidades y resoluciones. Siento que, en muchos aspectos, NewPipe es superior a la aplicación oficial de Youtube.
+
+*** Reemplazando Chrome
+Lineage OS incorpora un navegador, pero no es muy especial, además usa Webkit, lo que implica que muchas páginas no funcionen bien. Para reemplazarlo en F-droid hay varias versiones de Firefox, como [[https://f-droid.org/en/packages/org.mozilla.rocket/][Firefox Lite]] y [[https://f-droid.org/en/packages/org.mozilla.fennec_fdroid/][Fennec]], sin embargo, Firefox siempre me ha funcionado lento y a veces tarda hasta un minuto en dejarme escribir algo en la barra de búsqueda, por lo que, aunque quisiera, no uso Firefox.
+
+Decidí usar [[https://brave.com/][Brave Browser]] (disponible en Aurora Store), un navegador Open Source con un gran bloqueador de anuncios y que funciona muy bien. Me molesta un poco el hecho que esté basado en Chromium, y que no esté disponible en F-droid da que hablar, pero por el momento, no he encontrado nada mejor.
+
+*** Reemplazando Maps
+Maps casi no la uso, pero la alternativa perfecta es OpenStreetMaps, que tiene un par de apps [[https://f-droid.org/en/packages/com.github.axet.maps/][en F-droid]]. Mi problema es que OpenStreetMaps está prácticamente vacío para mi ciudad: unas cuantas calles importantes si están mapeadas, pero muchas, incluida mi casa, no. Me veo obligado a usar Maps, en el navegador, para ubicar calles y negocios. Al menos no tengo la app instalada.
+
+*** Reemplazando G-mail
+Ya no tengo acceso a la app de gmail oficial, la cual, he de decir, nunca funcionó bien, nunca actualizaba, las notificaciones llegaban cuando quería, y en muchas ocasiones he tenido que ir a una PC para ver y enviar correo porque la app quedaba en "no se pudo sincronizar". La alternativa que encontré fue [[https://f-droid.org/en/packages/com.fsck.k9/][K9Mail]], que a pesar de su interfaz anticuada, hace perfectamente su trabajo. 
+
+No obstante, ahora uso mi correo de gmail solo porque algunas convocatorias laborales a las que entré, usé ese correo para registrarme, ahora uso [[https://tutanota.com/][Tutanota]] como servicio de correo, que tiene app en F-droid y ofrece muchas opciones de privacidad. Espero poder deshacerme de mi correo de gmail pronto.
+
+*** Otras aplicaciones que uso
+Hay otras aplicaciones que uso, no tan relevantes como las anteriores, pero que considero que valen la pena ser mencionadas:
+
+| Aplicación     | Es alternativa para            | Comentario                                                                                                                         |
+|----------------+--------------------------------+------------------------------------------------------------------------------------------------------------------------------------|
+| [[https://f-droid.org/en/packages/com.nononsenseapps.feeder/][Feeder]]         | Feedly, Flipboard              | Un lector RSS, para seguir mis noticias. Funciona offline.                                                                         |
+| [[https://f-droid.org/en/packages/cz.martykan.forecastie/][Forecastie]]     | Apps de clima, AccuWeather     | Una app sencilla para ver el clima desde OpenWeatherMap.                                                                           |
+| [[https://f-droid.org/en/packages/com.simplemobiletools.gallery.pro/][Simple Gallery]] | Fotos, QuickPic                | Un visor de imágenes muy completo, con opciones para editar imágenes.                                                              |
+| [[https://f-droid.org/en/packages/com.jmstudios.redmoon/][Red Moon]]       | Twilight                       | Aplica un filtro de luz azul a ciertas horas. Es casi igual a Twilight, pero gratuito y libre.                                     |
+| [[https://f-droid.org/en/packages/net.gsantner.markor/][Markor]]         | Keep, EverNote, iA Writer      | Una app de notas, con soporte para Markdown y [[http://todotxt.org/][Todo.txt]]                                                                             |
+| [[https://f-droid.org/en/packages/com.orgzly/][Orgzly]]         | Todoist, Google Task, Any.do   | Permite crear listas de tareas, posee agenda y guarda los archivos en formato [[https://orgmode.org/][Org Mode]]. Usuarios de Emacs sabrán sacarle provecho. |
+| [[https://f-droid.org/en/packages/me.ccrama.redditslide/][Slide]]          | Reddit for Android             | Un cliente muy completo para Reddit.                                                                                               |
+| [[https://f-droid.org/en/packages/eu.kanade.tachiyomi/][Tachiyomi]]      | Manga Master, Manga Rock       | Un lector de manga, permite conectarse a varias fuentes a través de plugins.                                                       |
+| [[https://f-droid.org/en/packages/org.telegram.messenger/][Telegram FLOSS]] | El cliente oficial de Telegram | Telegram, pero libre y disponible en F-droid. No he encontrado mayores diferencias salvo los emojis usados.                        |
+| [[https://f-droid.org/en/packages/org.mariotaku.twidere/][Twidere]]        | Twitter for android            | Un gran cliente para Twitter, Mastodon y otras redes.                                                                              |
+
+Sin embargo, y pese a mis esfuerzos, hubo aplicaciones que no pude reemplazar por alternativas libres, pero que funcionan bien, aún sin los servicios de Google
+
+- [[https://labs.xda-developers.com/store/app/com.mixplorer][MiXplorer]]: Un explorador de archivos super completo. No he encontrado otro explorador gratuito que se le acerque en cuanto a funciones se refiere.
+- Lithium: Un lector EPUB ligero y bonito. En F-droid hay muy pocos, y son malos, pesados o la experiencia de uso no es tan buena.
+- Spotify: ¿Qué más puedo decir? Jamendo tiene música buena pero no tiene lo último de Dream Theater.
+- Whatsapp: Mis compañeros lo usan, mis familiares lo usan, mis amigos lo usan. Hay alternativas, pero sin la gente con la que quiero hablar no me sirven.
+
+** La vida sin Google, ¿Es para todos?
+No. Requiere algo más de esfuerzo por parte del usuario, esfuerzo que no todos están dispuestos a dar, sin embargo, no tener apps de Google en el teléfono no es malo, al contrario. Estoy seguro, y he visto, la mayoría no tiene idea de las aplicaciones que gentilmente Google preinstala para ellos: lectores de PDF, apps de notas, galerías, mensajería, música, etc. En lugar de si quiera abrirlas para ver que hacen van a descargar otra, con publicidad o de paga. Así que vivir sin estas aplicaciones no es el fin del mundo, es más, la mayoría ni las usa.
+
+Si se animan a hacerlo y su garantía se los permite, invito a todos a instalar una custom ROM o desinstalar todas las Gapps de sus dispositivos. Ahorrarán mucho espacio, liberarán recursos, su privacidad estará más segura y podrán utilizar alternativas mejores.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

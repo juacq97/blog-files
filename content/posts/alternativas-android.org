@@ -1,0 +1,148 @@
+#+title: Alternativas libres en Android a las aplicaciones más comunes
+#+date: 2019-09-24
+#+tags[]: android, freesoftware
+#+draft: false
+
+La primer pregunta cuando que le pasa por la cabeza a las personas si les dicen que abandonen Google y sus servicios en su celular es "¿y cómo voy a hacer <inserte tarea>, si no podré usar esa aplicación?". Afortunadamente hay muchas alternativas libres, disponibles en F-droid o en repositorios individuales para las aplicaciones más comunes (y otras no tanto), así que a continuación dejaré una recopilación de las mejores aplicaciones que yo he probado con las cuales no se extrañará casi nada a Google.
+
+*** Tienda de aplicaciones.
+/Reemplaza a Play Store/
+
+- [[https://f-droid.org/en/][F-droid]]: La primer "tienda" que hay que descargar es F-droid, un repositorio de aplicaciones libres desde el cual podremos descargar y actualizar nuestras aplicaciones totalmente libres.
+
+[[https://f-droid.org/assets/phone-frame.png]]
+
+- [[https://f-droid.org/en/packages/com.aurora.adroid/][Aurora Droid]]: Una aplicación alternativa para conectarse a F-droid con una apariencia mucho más atractiva.
+
+[[https://f-droid.org/repo/com.aurora.adroid/en-US/phoneScreenshots/ss001.png]]
+
+- [[https://f-droid.org/en/packages/com.aurora.store/][Aurora Store]]: Lo admito: no todas las alternativas libres disponibles valen la pena, algunas son malas, quedan a deber, o definitivamente no existen. Si hemos renunciado a Google en nuestro Android pero hay alguna aplicación a la que aún no podemos renunciar, la mejor manera de descargar aplicaciones de Play Store es con Aurora Store; además de tener una apariencia muy atractiva nos permite conectarnos sin necesidad de tener cuenta, además nos informa de los /trackers/ que tengan las aplicaciones, protegiendo nuestra privacidad.
+
+[[https://f-droid.org/repo/com.aurora.store/en-US/phoneScreenshots/ss001.png]]
+
+*** Navegador web
+/Reemplaza a Chrome/
+
+- [[https://f-droid.org/en/packages/org.mozilla.fennec_fdroid/][Fennec]]: Se trata de Firefox pero sin los complementos privativos de este último. Posee todas las características del navegador de Mozilla.
+
+[[https://cloud.disroot.org/core/preview?fileId=77911353&x=1366&y=768&a=true
+]]
+*** Correo
+/Reemplaza a Gmail/
+
+- [[https://f-droid.org/en/packages/eu.faircode.email/][Fair email]]: Un cliente de correo, funciona con protocolos como IMAP por lo que puede usarse con una cuenta de gmail o de outlook. Tiene varias características centradas en la privacidad y está en constante desarrollo.
+
+[[https://f-droid.org/repo/eu.faircode.email/en-US/phoneScreenshots/3_messages.png]]
+
+- [[https://tutanota.com/][Tutanota]]: Tutanota es un servicio de correo enfocado en la privacidad y con sede en Alemania. Su servicio gratuito ofrece 1 Gb. de almacenamiento, varios dominios para elegir y encriptación punto a punto de todos los mensajes. Su cliente para android está disponible para su descarga en F-droid.
+
+[[https://f-droid.org/repo/de.tutao.tutanota/en-US/phoneScreenshots/Screenshot_Tutanota_20180803-091118.png]]
+
+*** Calendario
+/Reemplaza a Google Calendar, el calendario propio de cada compañía/
+
+- [[https://f-droid.org/en/packages/com.simplemobiletools.calendar.pro/][Simple Calendar]]: Una aplicación de calendario sencilla, personalizable en los colores y aspectos de la interfaz, además permite sincronización mediante CalDAV o archivos .ics.
+
+[[https://cloud.disroot.org/core/preview?fileId=77911333&x=1366&y=768&a=true
+]]
+*** Nube y sincronización
+
+- [[https://f-droid.org/en/packages/com.nextcloud.client/][Nextcloud]]: Nextcloud es un servicio de almacenamiento en la nube /selfhost/ donde uno mismo debe montar su propio servidor, de esta forma la privacidad está asegurada gracias a que la información está en nuestros propios ordenadores. La aplicación para Android está disponible en F-droid y ofrece lo común en este tipo de servicios. Para comenzar a usar Nexcloud sin tener que pasar por todo el proceso de montar un servidor en https://nextcloud.com/signup/ se pueden encontrar sugerencias de proveedores que usan Nextcloud.
+
+[[https://nextcloud.com/wp-content/themes/next/assets/img/clients/mobile/android.png?x22777]]
+
+- [[https://f-droid.org/en/packages/com.nutomic.syncthingandroid/][Syncthing]]: Un servicio de sincronización p2p, donde los dispositivos se sincronizan entre sí en red local. No hay servidores remotos, cada dispositivo en un servidor, de esta forma, la información se mantiene en los dispositivos que deseamos sincronizar únicamente.
+
+[[https://f-droid.org/repo/com.nutomic.syncthingandroid/en-GB/phoneScreenshots/screenshot_phone_1.png]]
+
+- [[https://f-droid.org/en/packages/at.bitfire.davdroid/][DAVx⁵]]: La mejor manera de sincronizar nuestros calendarios con algún servicio en la nube es [[https://es.wikipedia.org/wiki/CalDAV][CalDAV]], un protocolo similar a WebDAV que permite sincronizar calendarios y listas de tareas. Muchos servicios de calendarios como Outlook, Google Calendar o Nextcloud permiten el uso de CalDAV, y la aplicación que se encarga de hacer la sincronización es DAVx⁵. De esta forma se puede tener calendarios sincronizados, sin importar el servicio de almacenamiento en la nube que usemos.
+
+[[https://f-droid.org/repo/at.bitfire.davdroid/en-US/phoneScreenshots/1.png]]
+
+*** Cámara
+/Reemplaza a Google Camera, la aplicación de cámara de cada compañía/
+
+- [[https://f-droid.org/en/packages/net.sourceforge.opencamera/][Open Camera]]: Una aplicación de cámara muy completa, con opciones avanzadas para tomar fotos y que da como resultado fotos de gran calidad. Su interfaz es algo (muy) anticuada pero funcional.
+
+[[https://cloud.disroot.org/core/preview?fileId=77911245&x=1366&y=768&a=true]]
+
+*** Galería
+/Reemplaza a Google fotos, la galería propia de la compañía/
+
+- [[https://f-droid.org/en/packages/com.simplemobiletools.gallery.pro/][Simple Gallery]]: Una galería muy personalizable, me recuerda en momentos a QuickPic. Tiene muchas opciones para organizar y administrar las fotos y videos en la memoria del teléfono.
+
+[[https://f-droid.org/en/packages/com.simplemobiletools.gallery.pro/]]
+
+*** Toma de notas y listas de tareas
+/Reemplaza a Google Keep, Evernote, Todoist/
+
+- [[https://f-droid.org/en/packages/net.gsantner.markor/][Markor]]: Un editor Markdown que nos permite tomar notas y hacer listas de tareas en formato todo.txt. Una aplicación muy completa que puede ser utilizada tanto como aplicación de notas sueltas como un completo editor Markdown.
+
+[[https://f-droid.org/repo/net.gsantner.markor/en/phoneScreenshots/01.png]]
+
+- [[https://f-droid.org/en/packages/com.orgzly/][Orgzly]]: Una aplicación de lista de tareas que usa el formato org-mode para almacenarlas. Cuenta con varias de las características propias de org-mode como son las etiquetas, prioridades, agenda, la capacidad de "doblar" las notas de un encabezado, entre otras opciones. 
+
+
+- [[https://f-droid.org/en/packages/nl.mpcjanssen.simpletask/][SimpleTask]]: Otra aplicación de lista de tareas, esta vez usando el formato todo.txt, lo que la hace más sencilla para usarse con (y quizá enfocada a) el sistema GTD. Cuenta con la posibilidad de crear filtros complejos y añadir scripts en LUA para mejores filtrados.
+
+
+- [[https://f-droid.org/en/packages/it.feio.android.omninotes.foss/][Omni Notes]]: Si se busca una aplicación más parecida a Google Keep, Omni Notes es la alternativa perfecta. Permite hacer notas con dibujos, audios, imágenes, /checklist/ y texto.
+
+[[https://raw.githubusercontent.com/federicoiosue/Omni-Notes/develop/assets/play_store_pics/09.png]]
+
+*** Lector de noticias
+/Reemplaza a Feedly, Flipboard, Google Kiosco/
+
+- [[https://f-droid.org/en/packages/com.nononsenseapps.feeder/][Feeder]]: Un lector RSS simple que añade el feed RSS de cualquier URL soportado, convierte la página web en texto plano para poder leerlo incluso sin conexión, permite activar notificaciones de aquellos canales que más nos interesen, entre otras opciones.
+
+[[https://f-droid.org/repo/com.nononsenseapps.feeder/en-US/phoneScreenshots/article_day.png]]
+
+- [[https://f-droid.org/en/packages/net.frju.flym/][Flym]]: Un lector de noticias que permite añadir fácilmente nuevas fuentes de noticias. AL igual que Feeder descarga la página en texto plano para poder leerla cómodamente.
+
+[[https://cloud.disroot.org/core/preview?fileId=77911424&x=1366&y=768&a=true]]
+
+*** Administrador de archivos
+/Reemplaza a Es Explorer, Google Files, Solid Explorer/
+
+- [[https://f-droid.org/en/packages/com.github.axet.filemanager/][File Manager]]: Un navegador de archivos sencillo, con una interfaz muy agradable y moderna.
+
+*** Música y videos
+
+- [[https://f-droid.org/en/packages/org.videolan.vlc/][VLC]]: El reproductor de video por antonomasia es FLOSS y está disponible en F-droid. VLC reproduce prácticamente cualquier formato de audio o video y es totalmente configurable hasta en aspectos muy avanzados como son códecs y demás.
+
+[[https://f-droid.org/repo/org.videolan.vlc/en-US/phoneScreenshots/00.png]]
+ 
+- [[https://f-droid.org/en/packages/com.kabouzeid.gramophone/][Phonograph]]: Además de una gran interfaz muy agradable, Phonograph posee un editor de etiquetas, editor de letras y varias configuraciones. Es un reproductor normal, pero su gran interfaz y lo redondo de sus opciones de configuración lo vuelven uno de mis favoritos.
+
+[[https://cloud.disroot.org/core/preview?fileId=77911391&x=1366&y=768&a=true]]
+
+- [[https://f-droid.org/en/packages/com.iven.musicplayergo/][Music Player GO]]: Un navegador muy minimalsta, cuya personalización se limita a elegir uno de los varios tonos pasteles con los que cuenta y poco más. Cuenta con una interfaz unificada así que no hay que moverse entre mil pantallas diferentes, todo está en una sola. Es un reproductor muy simple que se limita a reproducir música, pero hay una atracción en esa simpleza que me hace volver a él constantemente.
+
+[[https://cloud.disroot.org/core/preview?fileId=77911343&x=1366&y=768&a=true]]
+
+- [[https://f-droid.org/en/packages/org.schabi.newpipe/][NewPipe]]: Newpipe permite reproducir videos desde YouTube sin enviar casi información a Google. Permite "suscribirse" a canales, ver videos (se puede en ventana flotante fuera de la app, y sin pagar), descargarlos tanto en audio como en video, crear listas de reproducción, importar y exportar nuestras suscripciones, entre otras características que envidian poco o nada a la app oficial de YouTube.
+
+[[https://f-droid.org/repo/org.schabi.newpipe/en-US/phoneScreenshots/shot_01.png]]
+
+*** Redes sociales
+/Reemplaza a Facebook, twitter y demás/
+
+- [[https://f-droid.org/en/packages/com.pitchedapps.frost/][Frost for Facebook]]: Frost es un cliente para Facebook (en realidad, una forma más cómoda de acceder a la web de Facebook) con varias opciones interesantes como varios temas, multicuenta y un peso mucho, mucho menor al de la app de facebook.
+
+[[https://raw.githubusercontent.com/AllanWang/Storage-Hub/master/frost/screenshots/thumbnails/frost_quick_links.png]]
+
+- [[https://f-droid.org/en/packages/org.mariotaku.twidere/][Twidere]]: Un cliente para varios servicios de microblogging, entre ellos Twitter. Twidere ofrece todas las opciones que se pueden buscan en un cliente de Twitter, como ver post, comentarlos, ver y descargar imágenes, seguir usuarios, crear listas, ver tendencias y mucha personalización.
+
+[[https://cloud.disroot.org/core/preview?fileId=77911171&x=1366&y=768&a=true]]
+
+- [[https://f-droid.org/en/packages/me.ccrama.redditslide/][Slide]]: Un cliente para Reddit con muchas opciones de personalización y para hacer más cómoda la experiencia en reddit. Es posible ver post, comentar, suscribirse a subreddits, ver imágenes directamente aunque estén alojadas en servers externos y muchas opciones más.
+
+[[https://cloud.disroot.org/core/preview?fileId=77911222&x=1366&y=768&a=true]]
+
+*** Otros
+
+- [[https://f-droid.org/en/packages/com.junjunguo.pocketmaps/][Pocket Maps]] (reemplazo de Maps): Una app para ver y descargar mapas desde OpenStreetMaps
+
+- [[https://f-droid.org/en/packages/com.duckduckgo.mobile.android/][DuckDuckGo]] (reemplazo de Google Now): Un navegador simple con muchas opciones de privacidad enfocado en hacer búsquedas rápidas, justo como Google Now.
+
+- [[https://f-droid.org/en/packages/com.gsnathan.pdfviewer][Pdf Viewer Plus]] (reemplazo de Adobe Reader): Un lector de Pdf sencillo que hace justo eso: abrir Pdf's
