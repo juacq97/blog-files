@@ -1,3 +1,19 @@
-#+title: Acerca
+#+TITLE: About...
 
-de xd
+* ... the author
+My name is Juan Castro, I have a big interest on technology, reading and videogames.
+
+Related to tech, I can say about four years ago I started to use GNU/Linux on my computers and since I never looked back; I started with Xubuntu 16.04, but now I use Arch Linux, btw. With a similar interest, about two years ago I started to use /Tiling Window Managers/ instead of the clasics desktop environments. Afer my initiation on i3 and live quite a time on bspwm, now I use my own version of dwm.
+
+Despite my liking for technology, my studies are for education, especifically, I have a degree on secondary education with a major in mathematics, in other words, math teacher. Since I'm young I wanted to be a teacher, and I can say is a job that I enjoy a lot and has given me great experiences.
+
+My social media? I never used Instagram nor Twitter actively, and I stopped ussing Facebook a year ago, and I don't regret! Today I spent most of my time /online/ on others sources of entertainment, like YouTube (because there's no other alternative, though I hope LBRY becomes popular in the future), Reddit, and from time to time, mastodon and 4chan. And no, I'm not disconnected from the world and I still find out the important things that happen in my city, my country and the world.
+
+If you want to contact me you can do it on [[https://mstdn.mx/@juacq97][Mastodon]], [[https://github.com/juacq97][GitHub]] or by e-mail at juacq97@tutanota.com
+
+* ...this blog
+This blog arises as result of my interest on /blogging/ as a way to express my opinions, as well as a way to write about topics that interest me and, in some cases, has low coberture on spanish, my mother language, I need to say that, despite is a common topic, this isn't a blog about technology, but a personal blog, where I just cover the topics that I like.
+
+Technically, this blog is hosted on GitHub thanks to [[https://pages.github.com/][GitHub Pages]]. This site is build with the static sites generator [[gohugo.io][Hugo]], a program that I find relativelly easy to use (once you get the basics and you build a site). I use the [[https://github.com/vividvilla/ezhil][Ezhil]] theme; I like the minimalist look and feel. 
+
+This isn't my first blog, before I had a little blog on a [[https://writefreely.org/][Write Freely]] instance called [[qua.name]]. I decided to change because I wanted to write some posts (like this) both in spanish and english, sice I spend most of my time on forums and subrredits where the main langugae is english, and thanks to hugo I can add easily a button to change the language of the posts (located at the page footer).

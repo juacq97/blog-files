@@ -2,6 +2,7 @@
 #+draft: false
 #+date: 2020-01-02
 #+tags[]: linux
+#+translationkey: test
 
 Instalé un Window Manager minimalista. ¿Ahora qué? Esa es una pregunta que muchos usuarios se hacen al instalar una WM como Openbox, i3 o bspwm, que solamente muestran ventanas y poco más. Las características de un entorno de Escritorio completo, como lo son un panel/barra de tareas, explorador de archivos, o incluso un cajón de aplicaciones, suelen brillar por su ausencia en estas instalaciones, dejando en manos del usuario decidir que aplicaciones descargar. El problema es que, en algunas ocasiones, no sabemos que aplicaciones usar, o las que estamos acostumbrados pertenecen a entornos de escritorio completos y no funcionan de manera independiente.
 

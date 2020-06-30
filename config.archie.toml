@@ -1,6 +1,6 @@
 baseurl = "https://juan-blog.github.io/"
 languageCode = "es"
-theme="ezhil"
+theme="console"
 copyright = "Juan Castro"
 # Code Highlight
 pygmentsstyle = "monokai"
@@ -17,17 +17,17 @@ DefaultContentLanguage = "es"
 
 # Social Tags
 
+
 [languages]
   [languages.en]
-    title = "Juan Castro"
+    title = "El blog de Juan"
     languageName = "Read in english"
     weight = 2
   [languages.es]
-    title = "Juan Castro"
+    title = "El blog de Juan"
     languageName = "Leer en español"
     weight = 1
 # Main menu Items
-
 [[languages.en.menu.main]]
 name = "Home"
 url = "/"

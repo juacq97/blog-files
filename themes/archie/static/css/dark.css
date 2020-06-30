@@ -1,6 +1,6 @@
 body {
   color: white;
-  background-color: #282828;
+  background-color: #202124;
 }
 
 ::-moz-selection {
@@ -110,13 +110,4 @@ a:hover {
 .draft-label {
   color: var(--darkMaincolor);
   background-color: blue;
-}
-
-.language-list {
-    list-style-type: none;
-    width: 200px;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
 }
