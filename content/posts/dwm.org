@@ -3,7 +3,7 @@
 #+PUBLISHDATE: 2020-10-07T18:34:22-06:00
 #+DRAFT: nil
 #+TranslationKey: bujo
-#+TAGS: dwm, linux
+#+TAGS[]: dwm, linux
 #+DESCRIPTION: Usar dwm puede parecer complicado al inicio, y no es muy amigable con el usuario novel. Este post tratará de explicar lo básico de dwm para poder usarlo de manera cómoda en el día a día.
 
 [[https://dwm.suckless.org][dwm]] es un gestor de ventanas un tanto complicado de comenzar a utilizar. Al ser un producto más de la comunidad /suckless/ se adhiere a su [[https://suckless.org/philosophy/][filosofía]] y procura ser minimalista, frugal y limitado a solo 2000 líneas de código fuente. Debido a esto, al descargar dwm nos toparemos con poca o ninguna documentación (la documentación es el código fuente), y con un gestor de ventanas apenas usable, que carece de varias de las opciones básicas que esperaríamos tener. 

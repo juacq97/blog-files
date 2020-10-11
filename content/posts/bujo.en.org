@@ -3,7 +3,7 @@
 #+PUBLISHDATE: 2020-06-29T22:24:32-06:00
 #+DRAFT: nil
 #+TranslationKey: bujo
-#+TAGS: bujo gtd bulletjournal productivity
+#+TAGS[]: bujo gtd bulletjournal productivity
 #+DESCRIPTION: I have merged elements from Bullet Journal with GTD to organize my tasks, how it works?
 
 For a long time I have tried to use applications for making notes, to-do lists, calendars and other "productivity" systems. However, I have always encountered the same problem: after a couple of days or weeks I stop using it.

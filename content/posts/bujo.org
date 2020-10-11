@@ -3,7 +3,7 @@
 #+PUBLISHDATE: 2020-06-28T22:15:31-06:00
 #+DRAFT: nil
 #+TranslationKey: bujo
-#+TAGS: bujo gtd bulletjournal productividad
+#+TAGS[]: bujo gtd bulletjournal productividad
 #+DESCRIPTION: He juntado elementos de Bullet Journal con GTD para organizar mis tareas, ¿cómo funciona?
 
 Desde hace mucho tiempo he intentado utilizar aplicaciones para hacer notas, listas de tareas, calendarios y demás sistemas de "productividad". Sin embargo, siempre me he topado con el mismo problema: al cabo de un par de días o semanas dejo de utilizarlo.
