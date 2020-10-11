@@ -149,11 +149,11 @@ No hace mucho, [[https://github.com/mihirlad55][mihirlad55]] desarrolló un proy
 
 ** Tips y recomendaciones 
    
-****** Si el parche no aplica, y se vuelve muy complicado aplicarlo manualmente, déjalo por la paz
+**** Si el parche no aplica, y se vuelve muy complicado aplicarlo manualmente, déjalo por la paz
        En ocasiones los parches entran en conflicto con otros que tenemos aplicados, y si no sabemos como funciona dwm o no somos maestros de C, terminaremos rompiendo el programa. Si no sabes lo que haces, es mejor dejarlo así.
-****** Mantén tu propio build en github o algún sitio similar
+**** Mantén tu propio build en github o algún sitio similar
        No solo te permitirá compartirlo, sino que tendrás un respaldo en la nube de tu build y de los cambios hechos. Así puedes regresar a una versión anterior si lo deseas.
-****** Como evitar reiniciar la PC cada vez que recompilas
+**** Como evitar reiniciar la PC cada vez que recompilas
        Cada vez que cambias la más mínima cosita en dwm necesitas recompilar y reinicar para ver tus cambios aplicados. Esto puede volver loco a cualquiera. Aquí la solución.
 
   * Si usas un gestor de pantallas: Existe un parche llamado [[https://dwm.suckless.org/patches/restartsig/][restartsig]] el cual añade un nuevo atajo de teclado para reinciar dwm. Puedes ejecutarlo cada vez que recompiles dwm.
@@ -168,7 +168,7 @@ done
 
 Para reiniciar dwm solamente ejecuta ~killall dwm~ y se reinciará. Si quieres salir de la sesión, ejecuta ~killall xinit~.
 
-****** Evitar tener que usar ~sudo~ para instalar dwm
+**** Evitar tener que usar ~sudo~ para instalar dwm
        Tener que reinstalar con permisos ~sudo~ cada ocasión también puede volverse molesto. Si quieres que dwm se instale de manera local con tu usuario, puedes editar el ~Makefile~ de dwm, en la sección install, y cambiarlo por lo siguiente:
 
 #+begin_src makefile
@@ -188,13 +188,13 @@ export PATH
 
 *NOTA:* Esto aplica solo si usas ~startx~. Si usas un DM, quizá podrías cambiar el comando que se ejecuta en ~dwm.desktop~, mas no puedo afirmarlo.
 
-****** Mantén tu propia build, no uses las de otras personas
+**** Mantén tu propia build, no uses las de otras personas
        Otras personas pueden agregar cosas que no quieres y no podrás eliminar porque forman parte integral de su sistema. inspírate en el sistema de otros para hacer el tuyo.
        
-****** Sácale provecho a los tags
+**** Sácale provecho a los tags
        dwm no usa escritorios, usa tags. En lugar de tener un set de escritorios virtuales en donde puedes colocar tus ventanas, tienes un set de tags que puedes asignarle a tus ventanas. Aunque en teoría hacen lo mismo, los tags te permiten cosas como mostrar tus ventanas en un número determinado de tags a la vez (en contraste a los escritorios que solo permiten ver una ventana en el escritorio actual o en todos [sticky]), visualizar varias tags a la vez o desactivar tags para ciertas ventanas. Te recomiendo que pruebes esta función y mires si tiene lugar en tu workflow.
        
-****** Usa ~.xinitrc~ y ~.xprofile~ para iniciar tus programas automáticamente 
+**** Usa ~.xinitrc~ y ~.xprofile~ para iniciar tus programas automáticamente 
        De seguro quieres que algunos programas inicien automáticamente junto con dwm, como tu fondo de pantalla o algunos demonios. Puedes iniciarlos automáticamente agregándolos a tu ~.xinitrc~ si usas ~startx~, o a tu ~.xprofile~ si usas un gestor de pantallas:
 
        #+begin_src bash
@@ -205,7 +205,7 @@ export PATH
        
        Recuerda agregar todo eso antes de la línea de ejecución de dwm.
 
-****** No tengas miedo a usar programas "hinchados"
+**** No tengas miedo a usar programas "hinchados"
        Usar dwm no te obliga a usar únicamente programas que compartan la filosofía /suckless/. Si quieres o necesitas usar programas menos minimalistas como ~rofi~, ~firefox~, ~alacritty~, ~SystemD~ o ~Emacs~, adelante. Es tu sistema, no el de los demás.
 
 ** Programas para acompañar a dwm
