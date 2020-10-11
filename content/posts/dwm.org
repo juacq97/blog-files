@@ -1,0 +1,278 @@
+#+TITLE: Como usar dwm sin morir en el intento
+#+DATE: 2020-10-07T18:34:22-06:00
+#+PUBLISHDATE: 2020-10-07T18:34:22-06:00
+#+DRAFT: nil
+#+TranslationKey: bujo
+#+TAGS: dwm, linux
+#+DESCRIPTION: Usar dwm puede parecer complicado al inicio, y no es muy amigable con el usuario novel. Este post tratará de explicar lo básico de dwm para poder usarlo de manera cómoda en el día a día.
+
+[[https://dwm.suckless.org][dwm]] es un gestor de ventanas un tanto complicado de comenzar a utilizar. Al ser un producto más de la comunidad /suckless/ se adhiere a su [[https://suckless.org/philosophy/][filosofía]] y procura ser minimalista, frugal y limitado a solo 2000 líneas de código fuente. Debido a esto, al descargar dwm nos toparemos con poca o ninguna documentación (la documentación es el código fuente), y con un gestor de ventanas apenas usable, que carece de varias de las opciones básicas que esperaríamos tener. 
+
+Pese a eso, dwm cuenta con una gran comunidad detrás que constantemente desarrolla nuevas características, algunas inutiles y otras que no verás en otros gestores de ventanas y que te harán quedarte en dwm. En este post veremos algunos tips y ejemplos que permitirán adentrarnos en dwm y configurarlo para que sea nuestro entorno de uso diario.
+
+Debo decir que este post no es, ni pretende ser, una completa guía a dwm, o un manual de uso, sino pequeñas ideas y tips basados en mi propia experiencia y uso, por lo que no esperes que explique a detalle el funcionamiento del programa o qué hace cada una de las funciones. En lugar de eso, pretendo dar un norte a quienes quieren probar dwm o ya lo probaron pero vieron aterrados como ~make~ les llenaba la pantalla de errores rojos después de intentar aplicar un parche.
+
+[[dwm-rice.png]]
+
+** Instalación
+
+Lo primero a tener en cuenta: no tiene caso descargar dwm desde el gestor de paquetes de nuestra distribución. ¿Por qué? Debido a que toda la configuración se hace modificando el código fuente. Podemos hacerlo, sí, pero no tendremos ninguna oportunidad de personalizarlo a nuestro gusto.
+
+Para descargar dwm lo más sencillo es usar git:
+
+#+begin_src bash
+git clone https://git.suckless.org/git
+#+end_src
+
+Esto nos descargará la versión más reciente de dwm en nuestro dispositivo. Es muy recomendable poner este repositorio bajo nuestro propio sistema de control de versiones, porque lo vamos a arruinar, varias veces.
+
+Para instalar dwm basta ejecutar en terminal lo siguiente:
+
+#+begin_src bash
+make
+sudo make install
+#+end_src
+
+Recomiendo descargar también [[https://suckless.org/dmenu][dmenu]] para poder lanzar nuestras aplicaciones (lo podemos cambiar por [[https://github.com/davatorium/rofi][rofi]] después si queremos) y [[https://st.suckless.org/][st]], la terminal que usa dwm por defecto.
+
+Hay dos formas de lanzar dwm: con un gestor de ventanas o con ~startx~. 
+
+- *Usando un gestor de ventanas:*
+Primero ocuparemos crear una nueva entrada de escritorio para dwm:
+
+#+begin_src bash
+sudo touch /usr/share/xsessions/dwm.desktop
+#+end_src
+
+Y dentro de ese archivo colocar lo siguiente (recuerda ejecutar el editor con permisos root):
+#+begin_src 
+[Desktop Entry]
+Name=DWM
+Exec=dwm
+#+end_src
+
+Con eso debería aparecer dwm en la lista de opciones de nuestro gestor de pantalla.
+
+- *Usando startx:*
+La opción minimalista y mi preferida es ejecutarlo directamente desde la terminal con startx. Para ello creamos, si no existe ya, el archivo ~~/.xinitrc~ y en su interior colocamos:
+
+#+begin_src bash
+exec dwm
+#+end_src
+
+Y eso es todo, ahora desde una TTY ejecutamos ~startx~ y dwm se ajecutará. Podemos usar el archivo ~.xinitrc~ para establecer los programas que queremos que se ejecuten al inicio también.
+
+** Primeros pasos
+
+   
+
+Al iniciar dwm tendremos: un panel con los números del 1 al 9 en la parte superior y las letras "dwm", y un fondo negro. Lindo. 
+
+[[dwm-start.png]]
+
+- *NOTA:* Si no se abre nada es porque no tenemos instalada ~st~, la terminal por defecto de dwm.
+
+Comencemos por abrir varias terminales, eso se hacer presionando ~Alt + Shift + Enter~. Veremos que la ventana más reciente se acomoda del lado izquierdo de la pantalla ocupando poco más de la mitad, mientras que el resto de las ventanas ocupa el resto acomodadas una sobre otra. Este acomodo se conoce como "master & stack" o simplemente "tile". Podemos enfocar las siguientes ventanas con ~Alt + j~ y ~Alt + k~ (vim-keys) o con el mouse. Si tenemos instalado ~dmenu~, ~Alt + p~ nos abrirá un lindo menú en la parte superior de la pantalla con nuestras aplicaciones instaladas. Si presionamos ~Alt + <número>~ cambiamos de escritorio virtual, o "tag" de acuerdo a la jerga de dwm. ¡Listo! Ya estamos usando dwm, ¡Disfrutalo!
+
+No, no es cierto, la verdad es que esto es casi inusable: la tecla ~Alt~ se usa para muchas aplicaciones por lo que es mala idea usarlo como tecla modificadora, las terminales tienen un horrible espacio entre ellas, el panel es prácticamente inutil, no tenemos fondo de pantalla y los atajos de teclado no me gustan. Además de eso, extraño el layout "fibbonacci" de ~bspwm~. Veamos como podemos arreglarlo.
+
+** El archivo de configuración
+
+Al interior del directiorio del código fuente de dwm encontramos varios archivos. Si sabemos C y queremos estudiar la estructura de dwm, adelante, leelos; sino, solo nos enfocaremos en el archivo ~config.h.def~. Este archivo es la plantilla para nuestro archivo de configuración y el que se modificará cuando comencemos a agregar parches.
+
+Comencemos por copiar este archivo para quitarle esa terminación "def":
+
+#+begin_src bash
+cp config.h.def config.h
+#+end_src
+
+Abre el archivo ~config.h~ en tu editor de texto favorito y analizalo. Tiene comentarios por todos lados por lo que debería ser muy fácil entenderlo. Aquí solamente te mencionaré algunos cambios que recomiendo hacer inmediatamente:
+
+  * ~static const float mfact = 0.55;~: Esta línea determina que tanta parte de la pantalla ocupa la ventana "master". Por defecto, ocupa poco más de la mitad. Para que ocupe la mitad exactamente cambia el valor de esta variable por ~0.5~.
+  * ~static const int resizehints = 1;~: Esta línea es la causante que veamos espacios raros entre las terminales y algunas aplicaciones como ~emacs~. Cambiándolo a ~0~ arregla el problema.
+  * ~#define MODKEY Mod1Mask~: Define que tecla usaremos como modificador. Personalmente prefiero usar la tecla ~super~ (la tecla Windows), así que cambio esta línea por ~Mod4Mask~. 
+  * ~static const char *termcmd[]  = { "st", NULL };~ Si queremos usar otra terminal en lugar de "~st~ esta es la línea que debemos modificar, solamente hay que cambiar donde dice "st" por el nombre de la terminal que queramos, por ejemplo ~static const char *termcmd[]  = { "alacritty", NULL };~.
+  * Todo el array ~static Key keys[]~: Aquí están declarados los atajos de teclado. Hay que revisarlos  para saber que podemos hacer y como. Si queremos cambiar algún atajo, esta es la parte que debemos revisar.
+
+Terminadas nuestras modificaciones, deberemos volver a compilar e instalar el programa ejecutando ~make~ y ~sudo make install~. Después hay que salir de dwm (por defecto, ~Mod + Shift + q~, aunque podrías ejecutar también ~killall dwm~ en una terminal) y volver a entrar para ver los cambios.
+
+** Como parchar dwm y no morir en el intento
+En realidad, fallarás las primeras ocasiones, por eso te recomiendo que tengas bajo un sistema de control de versiones tu carpeta de dwm.
+
+Por defecto, dwm carece de muchas características que podemos encontrar en otros gestores de ventanas como opciones básicas. ¿Cómo podemos agregarlas? Con el uso de parches.
+
+Los parches son archivos con terminación ~.diff~, y básicamente indican qué cambios debemos hacer a un archivo. Las líneas que inician con un "+" son líneas que agregamos, y las que inician con un "-" son líneas que borramos. Se puede automatizar el proceso con el comando ~patch -p1 < ~/ruta/al/parche.diff~. 
+
+En la [[https://dwm.suckless.org/patches][página oficial de dwm]] hay una gran cantidad de parches que podemos probar, algunos útiles, algunos bastante específicos para la forma de trabajo de otra persona. Te invito a que visites la página y comiences a descargar parches con las opciones que quieras tener.
+
+Recuerda, para aplicar el parche solo necesitas moverte a la carpeta de dwm y ejecutar ~patch -p1 < ~/ruta/al/parche.diff~.
+
+**** Resolviendo conflictos con los parches
+
+Los parches modifican el código fuente, y nacen de los archivos de otras personas. Estas otras personas no necesariamente tienen los mismos parches aplicados que tú, por lo que, cuando comiences a parchar, notarás que el comando ~patch~ arroja errores en algunos archivos. ¿Qué hacemos entonces? Nos toca editar manualmente.
+
+Cuando la aplicación de un parche falla, se genera un archivo con extensión ~.rej~, por ejemplo ~dwm.c.rej~ el cual contiene todos los cambios no realizados. Será nuestro trabajar revisar ese archivo y copiar a mano las líneas correspondientes. Esto pasa debido a que el parche espera que la línea a modificar esté en cierto lugar, pero como hemos modificado ya el código con otros parches o, bien, el autor tiene otros parches aplicados, ~patch~ no es capaz de encontrar la línea a modificar y arroja errores.
+
+Ten en cuenta también que algunos parches cambian la estructura de algunas funciones y declaraciones para poder funcionar. En esos casos deberás tu buscar la lógica para agregar los cambios necesarios. En la mayoría de los casos no sucede, pero hay parches complejos que no son compatibles con otros parches.
+
+Otro aspecto a tomar en cuenta es que los parches modifican el archivo ~config.h.def~ y donde tenemos nuestra configuración es en ~config.h~, así que te toca a tí mover las líneas correspondientes al archivo correcto.
+
+Finalmente, cuando hayas aplicado los parches que quieres, necesitas recompilar dwm ejecutando ~make~, ~sudo make install~, y reiniciar para ver tus cambios aplicados.
+
+** Y la barra superior, ¿sirve para algo?
+
+dwm viene con un panel incorporado en la parte superior. Podemos moverlo a la parte inferior cambiando la línea ~static const int topbar = 1;~ por un cero. Este panel nos muestra los tags (o escritorios), el layout actual, el nombre de la ventana activa y, del otro lado, la versión de dwm que tenemos.
+
+Este último texto pude modificarse con el comando ~xsetroot -name~. Si nosotros ejecutamos ~xsetroot -name "Probando el panel"~ veremos como el texto del panel cambia por ~Probando el panel~. ¿Ya entendimos? Podemos generar un script simple para mostrar la información, /á la/ lemonbar:
+
+#+begin_src bash
+  while true; do
+      xsetroot -name "$(date)"
+      sleep 1s
+  done
+#+end_src
+
+Con eso tendremos un sencillo reloj en nuestro panel. Tu script puede ser tan largo como quieras, y si has usado dzen o polybar, debería ser sencillo hacer tu script. Si no, te tengo dos alternativas para tener un panel bonito y útil.
+
+**** Usando dwmblocks
+
+[[https://github.com/torrinfail/dwmblocks][dwmblocks]] es un proyecto inspirado en i3blocks, y tomó popularidad luego que Luke Smith lo comenzara a utilizar. Fiel a la naturaleza de dwm, requiere recompilar cada vez que editemos algo, y nos permite añadir módulos independientes que se actualizan por separado, de esta manera no tenemos el texto del volumen actualizandose cada segundo por culpa del reloj. Los módulos son scripts de bash o en cualquier lenguaje que nos de un texto a STDOUT.
+
+Personalmente recomiendo el [[https://github.com/ashish-yadav11/dwmblocks][fork de ashish-yadav11]], que es compatible con colores, tiene clicabilidad (ambas funciones requieren aplicar un parche, incluido en el repositorio) y un binario llamado ~sigdwmblocks~ que nos permite enviar una señal de actualización a cada módulo por separado. Así si quieres, por ejemplo, acutualizar el módulo del volumen y le asignaste en ~blocks.h~ la señal "1", puedes ejecutar en la terminal ~sigdwmblocks 1~ y el módulo del volumen se actualizará. Podemos agregar esto a nuestros atajos de teclado, de manera que si quieres subir el volumen y que se actualice el módulo cuando presiones el botón, puede agregar un atajo como este: ~pamixer -i 2; sigdwmblocks 1~.
+
+**** Usando Polybar
+
+No hace mucho, [[https://github.com/mihirlad55][mihirlad55]] desarrolló un proyecto que nos permite usar Polybar como el panel de dwm. Para ello necesitamos aplicar algunos parches: ~dwm-ipc~, ~anybar~ e instalar su [[https://github.com/mihirlad55/polybar-dwm-module][fork de polybar con el módulo para dwm]]. Puedes encontrar más información acerca de como usarlo en el link del módulo. Yo lo he probado y funciona bastante bien, además que mantiene todas las funciones especiales de dwm relacionadas a los tags. Una [[https://github.com/polybar/polybar/pull/2151][pull request]] fue enviada al equipo de Polybar, y aún sigue abierta, lo que significa que hay posibilidades que este pase a ser un módulo oficial de Polybar.
+
+**** Otros métodos
+[[https://dwm.suckless.org/status_monitor/][La página de dwm]] lista más proyectos para paneles, algunos de ellos ecritos en C, otros en Rust, y otros más en Go. Puedes echarles un vistazo si gustas.
+
+** Tips y recomendaciones 
+   
+****** Si el parche no aplica, y se vuelve muy complicado aplicarlo manualmente, déjalo por la paz
+       En ocasiones los parches entran en conflicto con otros que tenemos aplicados, y si no sabemos como funciona dwm o no somos maestros de C, terminaremos rompiendo el programa. Si no sabes lo que haces, es mejor dejarlo así.
+****** Mantén tu propio build en github o algún sitio similar
+       No solo te permitirá compartirlo, sino que tendrás un respaldo en la nube de tu build y de los cambios hechos. Así puedes regresar a una versión anterior si lo deseas.
+****** Como evitar reiniciar la PC cada vez que recompilas
+       Cada vez que cambias la más mínima cosita en dwm necesitas recompilar y reinicar para ver tus cambios aplicados. Esto puede volver loco a cualquiera. Aquí la solución.
+
+  * Si usas un gestor de pantallas: Existe un parche llamado [[https://dwm.suckless.org/patches/restartsig/][restartsig]] el cual añade un nuevo atajo de teclado para reinciar dwm. Puedes ejecutarlo cada vez que recompiles dwm.
+
+  * Si usas startx: La manera más sencilla es remplazar la línea que dice ~exec dwm~ en tu ~.xinitrc~ por lo siguiente:
+  
+#+begin_src bash
+while true; do
+    ~/.local/dwm 2> /tmp/dwm.log
+done
+#+end_src
+
+Para reiniciar dwm solamente ejecuta ~killall dwm~ y se reinciará. Si quieres salir de la sesión, ejecuta ~killall xinit~.
+
+****** Evitar tener que usar ~sudo~ para instalar dwm
+       Tener que reinstalar con permisos ~sudo~ cada ocasión también puede volverse molesto. Si quieres que dwm se instale de manera local con tu usuario, puedes editar el ~Makefile~ de dwm, en la sección install, y cambiarlo por lo siguiente:
+
+#+begin_src makefile
+install: all
+	mkdir -p ~/.local
+	cp -f dwm ~/.local
+	chmod 755 ~/.local/dwm
+	pkill dwm
+#+end_src
+
+Esto no solo instalará dwm en tu carpeta local, sino que también reiniciará dwm automáticamente cada vez que recompiles. Para que esto funcione debes añadir la ruta ~~.local/~ a tu ~$PATH~ agregando a tu ~.bashrc~ o ~-zshrc~
+
+#+begin_src bash
+PATH="$HOME/.local"
+export PATH
+#+end_src
+
+*NOTA:* Esto aplica solo si usas ~startx~. Si usas un DM, quizá podrías cambiar el comando que se ejecuta en ~dwm.desktop~, mas no puedo afirmarlo.
+
+****** Mantén tu propia build, no uses las de otras personas
+       Otras personas pueden agregar cosas que no quieres y no podrás eliminar porque forman parte integral de su sistema. inspírate en el sistema de otros para hacer el tuyo.
+       
+****** Sácale provecho a los tags
+       dwm no usa escritorios, usa tags. En lugar de tener un set de escritorios virtuales en donde puedes colocar tus ventanas, tienes un set de tags que puedes asignarle a tus ventanas. Aunque en teoría hacen lo mismo, los tags te permiten cosas como mostrar tus ventanas en un número determinado de tags a la vez (en contraste a los escritorios que solo permiten ver una ventana en el escritorio actual o en todos [sticky]), visualizar varias tags a la vez o desactivar tags para ciertas ventanas. Te recomiendo que pruebes esta función y mires si tiene lugar en tu workflow.
+       
+****** Usa ~.xinitrc~ y ~.xprofile~ para iniciar tus programas automáticamente 
+       De seguro quieres que algunos programas inicien automáticamente junto con dwm, como tu fondo de pantalla o algunos demonios. Puedes iniciarlos automáticamente agregándolos a tu ~.xinitrc~ si usas ~startx~, o a tu ~.xprofile~ si usas un gestor de pantallas:
+
+       #+begin_src bash
+	 nitrogen -R &
+	 emacs --daemon &
+	 picom &
+       #+end_src
+       
+       Recuerda agregar todo eso antes de la línea de ejecución de dwm.
+
+****** No tengas miedo a usar programas "hinchados"
+       Usar dwm no te obliga a usar únicamente programas que compartan la filosofía /suckless/. Si quieres o necesitas usar programas menos minimalistas como ~rofi~, ~firefox~, ~alacritty~, ~SystemD~ o ~Emacs~, adelante. Es tu sistema, no el de los demás.
+
+** Programas para acompañar a dwm
+
+dwm se encarga solamente de mostrar ventanas. De seguro quieres menús, terminales, y programas lindos para mostrar en tus capturas para r/unixporn. Te dejo a continuación mi lista de programas que uso diariamente junto a dwm o he usado en el pasado. Nota que algunos no son necesariamente minimalistas, pero hacen su trabajo bastante bien.
+
+**** Terminales
++ [[https://st.suckless.org/][st]]: La terminal desarrollada por la comunidad suckless. Sigue las mismas líneas de diseño que dwm, por lo que si quieres funciones muy extravagantes, algunas básicas, tendrás que parchar.
++ [[https://github.com/alacritty/alacritty][Alacritty]]: La autodenominada terminal más rápida en existencia gracias a su aceleración por GPU. Es buena y trae muchas opciones interesantes.
++ xfce4-terminal/lxterminal: Las terminales de XFCE4 y LXDE son buenas terminales. Ambas cuentan con interfaces gráficas para configurarlas.
+
+**** Menús
++ [[https://tools.suckless.org/dmenu/][dmenu]]: El menú dinámico, producto también de suckless. Permite crear menús gŕaficos utilizando STDOUT, lo que lo vuelve perfecto para scripts. Además incorpora un script llamado ~dmenu_run~ que se suele usar como lanzador de aplicaciones.
+
++ [[https://github.com/davatorium/rofi][rofi]]: Un menú mucho más completo. Incluye un menú para lanzar aplicaciones, un cambiador de ventanas, un menú para ssh y un reemplazo completo para dmenu. Además es muy personalizable.
+
+**** Compositor
++ [[https://github.com/yshui/picom][Picom]]: Nos permite tener sombras, transparencias y un ambiente libre (casi) de /tearing/.
+**** Servidor de notificaciones
++ [[https://dunst-project.org/][dunst]]: Un servidor de notificaciones muy personalizable, incluye funciones interesantes como mostrar imágenes, marcado pango, y puede recibir notificaciones desde D-bus o con libnotify (~notify-send~). 
+
+**** Fondos de pantalla
++ [[https://github.com/l3ib/nitrogen/][Nitrogen]]: Una interfaz gráfica para elegir fondo de pantalla. Al reiniciar necesitas volver a cargar el fondo de pantalla, esto puedes hacerlo ejecutando ~nitrogen --restore~.
++ [[https://feh.finalrewind.org/][feh]]: Un visor de imágenes que además incorpora la opción de elegir fondos de pantalla. Para ello solo debes ejecutar en la terminal  ~feh --bg-scale \/path/to/image.file~. Al reiniciar necesitas volver a cargar el fondo de pantalla, esto puedes hacerlo ejecutando ~~/.fehbg &~.
+
+**** Reproductor de videos
++ [[https://mpv.io/][mpv]]: Un reproductor multimedia ligero y sencillo, pero poderoso.
+
+**** Visor de imágenes:
++ [[https://feh.finalrewind.org/][feh]]: Un visor de imágenes que además incorpora la opción de elegir fondos de pantalla.
++ [[https://github.com/muennich/sxiv][sxiv]]: Un visor de imágenes ligero y simple, muy parecido a feh, aunque sin la opción de colocar fondos de pantallas, pero puede reproducir gifs y tiene un modo "expo" para ver todas las imágenes seleccionadas, puede ejecutar scripts sobre imágenes e incluso puede usarse como seleccionador para scripts.
+
+**** Visor de documentos
++ [[https://pwmt.org/projects/zathura/][Zathura]]: Un visor de archivos minimalista, tiene algunas cuantas configuraciones que puedes aplicar para cambiar colores y atajos de teclado.
+
+**** Parches que debería usar:
+Esto depende de cada quien, aún así te comparto la lista de parches que yo uso.
+
+ 
+****** Funcionales
+  Aquellos parches que añaden nuevas funciones a DWM, algunas de ellas son funciones sencillas que están presentes en otros TWM.
+  - [[https://dwm.suckless.org/patches/actualfullscreen/dwm-actualfullscreen-20191112-cb3f58a.diff][actualfullscreen:]] Permite activar verdadera pantalla completa en lugar de solo activar el modo monocle y esconder el panel.
+  - [[https://dwm.suckless.org/patches/alwayscenter/][alwayscenter]]: Las ventanas flotantes siempre se colocan al centro de la pantalla.
+  - [[https://dwm.suckless.org/patches/cyclelayouts/dwm-cyclelayouts-20180524-6.2.diff][cyclelayouts:]] Pasa por la lista de layouts con una combinación de botones.
+  - [[https://dwm.suckless.org/patches/inplacerotate/][inplacerotate]]: Permite rotar las ventanas en el stack sin cambiar master.
+  - [[https://dwm.suckless.org/patches/movestack/dwm-movestack-6.1.diff][movestack:]] Permite mover las ventanas en la parte stack, cuando se usa el esquema por defecto.
+  - [[https://dwm.suckless.org/patches/pertag/dwm-pertag-20170513-ceac8c9.diff][pertag:]] Por defecto, dwm usa el mismo esquema para todos los tags. Con este parche cada tag tiene un esquema diferente (el esquema inicial es tile).
+  - [[https://dwm.suckless.org/patches/switchcol/][switchcol:]] Permite cambiar el foco entre master y stack con un solo /keybinding/. Útil con el layout /deck/.
+  - [[https://dwm.suckless.org/patches/winview/][winview]]: Si están viendo varios tags a la vez, al presionar un /keybinding/ se cambia al tag de la ventana enfocada.
+
+****** Layouts
+  Son aquellas /layouts/ nuevas que he agregado a DWM.
+  - [[https://dwm.suckless.org/patches/centeredmaster/][centeredmaster:]] La ventana /master/ se coloca en el centro mientras las otras aparecen en rejilla alrededor.
+  - [[https://dwm.suckless.org/patches/deck/][deck:]] La parte /stack/ solo muestra una ventana a la vez. Si se usa con /inplacerotate/ es posible cambiar la ventana en el /stack/ sin mover /master/.
+  - [[https://dwm.suckless.org/patches/fibonacci/dwm-fibonacci-5.8.2.diff][fibonacci:]] Dos esquemas nuevos: spiral y dwindle (à la bspwm).
+  - [[https://dwm.suckless.org/patches/gridmode/dwm-gridmode-20170909-ceac8c9.diff][gridmode:]] Esquema de rejilla para.
+  - [[https://dwm.suckless.org/patches/rmaster/dwm-rmaster-6.1.diff][rmaster:]] Permite invertir el orden del esquema tile: master a la izquierda y stack a la derecha.
+
+****** Estéticos
+  Parches que unicamente sirven para mejorar el aspecto estético del WM y aportan poco o nada al aspecto funcional.
+  - [[https://dwm.suckless.org/patches/colorbar/][colorbar]]: Añade esquemas de colores nuevos para cada sección del panel.
+  - [[https://github.com/ashish-yadav11/dwmblocks][dwmblocks]]: Agrega soporte para texto coloreado y poder presionar en los módulos.
+  - [[https://dwm.suckless.org/patches/alpha/dwm-fixborders-6.2.diff][fixborders]]: Arregla los bordes transparentes cuando se usa compton/picom.
+  - [[https://dwm.suckless.org/patches/uselessgap/dwm-uselessgap-6.2.diff][uselessgap:]] Añade separaciones inútiles entre ventanas. Apesar de no ser el único parche, si es el más sencillo de aplicar.
+
+** Un primer acercamiento: el proyecto flexipatch
+
+El proyecto [[https://github.com/bakkeby/dwm-flexipatch][flexipatch]] es una versión muy modificada de dwm que incorpora un nuevo archivo llamado ~patches.h~. Este archivo actua como switch para activar o desactivar parches. Es una manera sencilla de probar las opciones que la comunidad de dwm ha creado, aunque no es muy recomendable para su uso diario, pues la configuración está desalentada. Si quieres probar las posibilidades de dwm sin meterte de lleno en el problema de parchar, o quieres estar de que hace determinado parche antes de instalarlo, te recomiendo probar este proyecto.
+
+
