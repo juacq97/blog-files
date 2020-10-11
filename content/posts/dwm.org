@@ -2,7 +2,7 @@
 #+DATE: 2020-10-07T18:34:22-06:00
 #+PUBLISHDATE: 2020-10-07T18:34:22-06:00
 #+DRAFT: nil
-#+TranslationKey: bujo
+#+TranslationKey: dwm
 #+TAGS[]: dwm, linux
 #+DESCRIPTION: Usar dwm puede parecer complicado al inicio, y no es muy amigable con el usuario novel. Este post tratará de explicar lo básico de dwm para poder usarlo de manera cómoda en el día a día.
 
@@ -121,7 +121,7 @@ Finalmente, cuando hayas aplicado los parches que quieres, necesitas recompilar 
 
 ** Y la barra superior, ¿sirve para algo?
 
-dwm viene con un panel incorporado en la parte superior. Podemos moverlo a la parte inferior cambiando la línea ~static const int topbar = 1;~ por un cero. Este panel nos muestra los tags (o escritorios), el layout actual, el nombre de la ventana activa y, del otro lado, la versión de dwm que tenemos.
+dwm viene con un panel incorporado en la parte superior. Podemos moverlo a la parte inferior cambiando la línea ~static const int topbar = 1;~ por un cero. Este panel nos muestra los escritorios (tags), el layout actual, el nombre de la ventana activa y, del otro lado, la versión de dwm que tenemos.
 
 Este último texto pude modificarse con el comando ~xsetroot -name~. Si nosotros ejecutamos ~xsetroot -name "Probando el panel"~ veremos como el texto del panel cambia por ~Probando el panel~. ¿Ya entendimos? Podemos generar un script simple para mostrar la información, /á la/ lemonbar:
 
@@ -186,19 +186,19 @@ PATH="$HOME/.local"
 export PATH
 #+end_src
 
-*NOTA:* Esto aplica solo si usas ~startx~. Si usas un DM, quizá podrías cambiar el comando que se ejecuta en ~dwm.desktop~, mas no puedo afirmarlo.
+*NOTA:* Asegurate de desinstalar o borrar manualmente el binario en ~/usr/bin/~, sino, el sistema se confundirá sobre que binario ejecutar.
 
 **** Mantén tu propia build, no uses las de otras personas
        Otras personas pueden agregar cosas que no quieres y no podrás eliminar porque forman parte integral de su sistema. inspírate en el sistema de otros para hacer el tuyo.
        
 **** Sácale provecho a los tags
-       dwm no usa escritorios, usa tags. En lugar de tener un set de escritorios virtuales en donde puedes colocar tus ventanas, tienes un set de tags que puedes asignarle a tus ventanas. Aunque en teoría hacen lo mismo, los tags te permiten cosas como mostrar tus ventanas en un número determinado de tags a la vez (en contraste a los escritorios que solo permiten ver una ventana en el escritorio actual o en todos [sticky]), visualizar varias tags a la vez o desactivar tags para ciertas ventanas. Te recomiendo que pruebes esta función y mires si tiene lugar en tu workflow.
+       dwm no usa escritorios, usa tags. En lugar de tener un set de escritorios virtuales en donde puedes colocar tus ventanas, tienes un set de tags que puedes asignarle a tus ventanas. Aunque parece que son lo mismo, los tags te permiten cosas como mostrar tus ventanas en un número determinado de tags a la vez (en contraste a los escritorios que solo permiten ver una ventana en el escritorio actual o en todos [sticky]), visualizar varias tags a la vez o desactivar tags para ciertas ventanas. Te recomiendo que pruebes esta función y mires si tiene lugar en tu workflow.
        
 **** Usa ~.xinitrc~ y ~.xprofile~ para iniciar tus programas automáticamente 
        De seguro quieres que algunos programas inicien automáticamente junto con dwm, como tu fondo de pantalla o algunos demonios. Puedes iniciarlos automáticamente agregándolos a tu ~.xinitrc~ si usas ~startx~, o a tu ~.xprofile~ si usas un gestor de pantallas:
 
        #+begin_src bash
-	 nitrogen -R &
+	 nitrogen --restore &
 	 emacs --daemon &
 	 picom &
        #+end_src
@@ -206,19 +206,19 @@ export PATH
        Recuerda agregar todo eso antes de la línea de ejecución de dwm.
 
 **** No tengas miedo a usar programas "hinchados"
-       Usar dwm no te obliga a usar únicamente programas que compartan la filosofía /suckless/. Si quieres o necesitas usar programas menos minimalistas como ~rofi~, ~firefox~, ~alacritty~, ~SystemD~ o ~Emacs~, adelante. Es tu sistema, no el de los demás.
+       Usar dwm no te obliga a usar únicamente programas que compartan la filosofía /suckless/. Si quieres o necesitas usar programas menos minimalistas como ~rofi~, ~firefox~, ~alacritty~, ~Systemd~ o ~Emacs~, adelante. Es tu sistema, no el de los demás.
 
 ** Programas para acompañar a dwm
 
 dwm se encarga solamente de mostrar ventanas. De seguro quieres menús, terminales, y programas lindos para mostrar en tus capturas para r/unixporn. Te dejo a continuación mi lista de programas que uso diariamente junto a dwm o he usado en el pasado. Nota que algunos no son necesariamente minimalistas, pero hacen su trabajo bastante bien.
 
 **** Terminales
-+ [[https://st.suckless.org/][st]]: La terminal desarrollada por la comunidad suckless. Sigue las mismas líneas de diseño que dwm, por lo que si quieres funciones muy extravagantes, algunas básicas, tendrás que parchar.
++ [[https://st.suckless.org/][st]]: La terminal desarrollada por la comunidad suckless. Sigue las mismas líneas de diseño que dwm, por lo que si quieres funciones muy extravagantes o algunas básicas, tendrás que parchar.
 + [[https://github.com/alacritty/alacritty][Alacritty]]: La autodenominada terminal más rápida en existencia gracias a su aceleración por GPU. Es buena y trae muchas opciones interesantes.
 + xfce4-terminal/lxterminal: Las terminales de XFCE4 y LXDE son buenas terminales. Ambas cuentan con interfaces gráficas para configurarlas.
 
 **** Menús
-+ [[https://tools.suckless.org/dmenu/][dmenu]]: El menú dinámico, producto también de suckless. Permite crear menús gŕaficos utilizando STDOUT, lo que lo vuelve perfecto para scripts. Además incorpora un script llamado ~dmenu_run~ que se suele usar como lanzador de aplicaciones.
++ [[https://tools.suckless.org/dmenu/][dmenu]]: El menú dinámico, producto también de suckless. Permite crear menús gráficos utilizando STDOUT, lo que lo vuelve perfecto para scripts. Además incorpora un script llamado ~dmenu_run~ que se suele usar como lanzador de aplicaciones.
 
 + [[https://github.com/davatorium/rofi][rofi]]: Un menú mucho más completo. Incluye un menú para lanzar aplicaciones, un cambiador de ventanas, un menú para ssh y un reemplazo completo para dmenu. Además es muy personalizable.
 
@@ -242,10 +242,10 @@ dwm se encarga solamente de mostrar ventanas. De seguro quieres menús, terminal
 + [[https://pwmt.org/projects/zathura/][Zathura]]: Un visor de archivos minimalista, tiene algunas cuantas configuraciones que puedes aplicar para cambiar colores y atajos de teclado.
 
 **** Parches que debería usar:
-Esto depende de cada quien, aún así te comparto la lista de parches que yo uso.
+Esto depende de cada quien, pero te comparto la lista de parches que yo uso.
 
  
-****** Funcionales
+****** *Funcionales*
   Aquellos parches que añaden nuevas funciones a DWM, algunas de ellas son funciones sencillas que están presentes en otros TWM.
   - [[https://dwm.suckless.org/patches/actualfullscreen/dwm-actualfullscreen-20191112-cb3f58a.diff][actualfullscreen:]] Permite activar verdadera pantalla completa en lugar de solo activar el modo monocle y esconder el panel.
   - [[https://dwm.suckless.org/patches/alwayscenter/][alwayscenter]]: Las ventanas flotantes siempre se colocan al centro de la pantalla.
@@ -256,7 +256,7 @@ Esto depende de cada quien, aún así te comparto la lista de parches que yo uso
   - [[https://dwm.suckless.org/patches/switchcol/][switchcol:]] Permite cambiar el foco entre master y stack con un solo /keybinding/. Útil con el layout /deck/.
   - [[https://dwm.suckless.org/patches/winview/][winview]]: Si están viendo varios tags a la vez, al presionar un /keybinding/ se cambia al tag de la ventana enfocada.
 
-****** Layouts
+****** *Layouts*
   Son aquellas /layouts/ nuevas que he agregado a DWM.
   - [[https://dwm.suckless.org/patches/centeredmaster/][centeredmaster:]] La ventana /master/ se coloca en el centro mientras las otras aparecen en rejilla alrededor.
   - [[https://dwm.suckless.org/patches/deck/][deck:]] La parte /stack/ solo muestra una ventana a la vez. Si se usa con /inplacerotate/ es posible cambiar la ventana en el /stack/ sin mover /master/.
@@ -264,7 +264,7 @@ Esto depende de cada quien, aún así te comparto la lista de parches que yo uso
   - [[https://dwm.suckless.org/patches/gridmode/dwm-gridmode-20170909-ceac8c9.diff][gridmode:]] Esquema de rejilla para.
   - [[https://dwm.suckless.org/patches/rmaster/dwm-rmaster-6.1.diff][rmaster:]] Permite invertir el orden del esquema tile: master a la izquierda y stack a la derecha.
 
-****** Estéticos
+****** *Estéticos*
   Parches que unicamente sirven para mejorar el aspecto estético del WM y aportan poco o nada al aspecto funcional.
   - [[https://dwm.suckless.org/patches/colorbar/][colorbar]]: Añade esquemas de colores nuevos para cada sección del panel.
   - [[https://github.com/ashish-yadav11/dwmblocks][dwmblocks]]: Agrega soporte para texto coloreado y poder presionar en los módulos.
