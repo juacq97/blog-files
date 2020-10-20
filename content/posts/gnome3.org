@@ -1,6 +1,6 @@
 #+TITLE: Porqué cambié a GNOME y en qué rayos estaba pensando
-#+DATE: 2020-10-19T18:30:00-06:00
-#+PUBLISHDATE: 2020-10-19T18:30:00-06:00
+#+DATE: 2020-10-19
+#+PUBLISHDATE: 2020-10-19
 #+DRAFT: nil
 #+TranslationKey: gnome
 #+TAGS[]: linux
