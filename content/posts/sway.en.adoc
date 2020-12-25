@@ -81,3 +81,7 @@ At the moment, Wayland and Sway are usable. However, there are several annoyance
 I am personally concerned about the fact that GNOME and KDE seem to be using their own protocols, which forces us to use the native applications of those environments or use their protocols if we want our programs to work with them.  This would cause many applications not to work with independent composers like Sway, or developers to have to decide whether to make their program compatible with `wl-roots', GNOME or Plasma, and the latter two would probably win. Consequently, the prophecy I read in /g/ would be fulfilled: Wayland would be the end of independent window managers and Linux would only work with complete Desktop Environments. I really hope that this doesn't happen and standardize protocols that everyone can use as X11 does.
 
 In the meantime I will enjoy Sway as much as possible. I don't know if I will come back to X11 and dwm soon. If I run into any problems that prevent me from doing my job I will, if not I think I will stay here, who knows? maybe my experience will help shape the future of the Linux desktop!
+
+Finally, an screenshot, you know, because the `rice`.
+
+image::sway.png[]

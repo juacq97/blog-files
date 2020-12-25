@@ -82,3 +82,7 @@ Por el momento, Wayland y Sway son utilizables. No obstante hay varias molestias
 Personalmente me preocupa el hecho que GNOME y KDE parecen estar utilizando sus propios protocolos, lo que obliga a usar las aplicaciones nativas de esos entornos o usar sus protocolos si queremos nuestros programas que funcionen con ellos. Esto provocaría que con los compositores independientes como Sway no funcionen muchas aplicaciones, o que los desarrolladores tengan que decidir si hacer su programa compatible con `wl-roots`, GNOME o Plasma, y probablemente ganen los últimos dos. En consecuencia, se cumpliría la profecía que leí en /g/: Wayland sería el final de los window managers independientes y Linux solo funcionaría con Entornos de Escritorios completos. Espero en verdad que eso no pase y se estandaricen protocolos que todos puedan usar como lo hace X11.
 
 Por mientras disfrutaré lo posible de Sway. No se si vuelva a X11 y dwm pronto. Si me topo con algún problema que me impida hacer mi trabajo lo haré, si no, creo que me mantendré aquí. ¿Quién sabe? ¡Quizá mi experiencia ayude a moldear el futuro del escritorio en Linux!
+
+Finalmente, una captura de pantalla, por el tema del `rice`
+
+image::sway.png[]
