@@ -1,0 +1,33 @@
+---
+title: "How do I organize my weeks (for now)?"
+date: "2020-12-07"
+draft: false
+translationkey: organize
+categories: ["gtd,productivity"]
+---
+
+I recently wrote about how I migrated my organizational system to an analog system. I had been using the Bullet Journal for a few months, but I encountered a great difficulty: I was not using it. I never filled it out and two or three weeks went by without even opening it. I abandoned the _bujo_ long ago, gave away the _Moleskine_ I had bought and returned to a digital system, which makes a lot of sense now that I work in the city and through virtual classes via Zoom. The same system that I criticized before, I'm going back to it, but with some changes.
+
+== All.txt. So simple that we can't even consider it a format
+
+http://todotxt.org/ [Todotxt] is a format that I have been aware of for a very long time, long before Org-mode, and I have used and abandoned it on many occasions, both on the computer and on the smartphone with the great Simpletask app. What made me come back to it? One thing: the https://f-droid.org/en/packages/nl.mpcjanssen.simpletask.webdav/ [new version of simpletask with webDAV support]. 
+
+I installed it by accident looking for the real cloudless version, when I stumbled upon it for my big surprise, which is a version with webDAV support. What's so wonderful about this? That I can use it with any cloud service that supports webDAV, and my current service, https://pcloud.com [pCloud] supports it at https://webdav.pcloud.com .
+
+Simpletask is a super easy to use app, and the all.txt "format" is incredibly simple. I can easily edit it in any text editor I have installed on my PC or use the CLI application, use pCloud for synchronization and have it in a matter of seconds on my cell phone in a super comfortable app. Since I'm working at home in the city with internet... usable, I have no problems with synchronization from my PC. On the other hand, Simpletask reads and writes the file directly to the pCloud server and I always have mobile data, so I haven't had any problem. My _TODOs_ found a digital replacement, and soon it would be the turn of the calendar.
+
+== Remind to the rescue
+
+I recently discovered an application called https://dianne.skoll.ca/projects/remind/ [remind] on https://www.youtube.com/user/g297125009 [Gavin Freeborn's channel]. It is basically a calendar that is fed from a simple text file with a very simple and humanly readable syntax. The philosophy is the same as with org-mode, since the calendar is generated with a text file, and despite being a very light program it is extremely powerful. `remind` can generate and print calendar entries based on the lunar position, the Jewish calendar, use pieces of C to generate super complex calendars and add colored entries, among many other things. 
+
+Except for the colors, none of the above interests me, what really captivated me was its ability to print a calendar in ASCII format on the terminal and the script included with `remind` called `rem2ps`, which converts your `.rem` file (the `remind` format) to postscript, and from there I convert it to PDF with `ps2pdf`. With an additional https://github.com/mkilgore/dotfiles/blob/master/scripts/rem2ics.awk [script] that I have adapted to my needs called `rem2ics` I can convert the `remind` file to ICS, and thus import it into the calendar I use on my smartphone (https://f-droid.org/packages/com.simplemobiletools.calendar.pro [Simple Calendar]) so that I don't have to deal with terminals and text files. 
+
+Nowadays I also use `remind` to generate my dosages and my class schedules, since I can make a PDF and colored calendar very easily and I can easily share it with my bosses at school. Even the problem I had with the accents (necessary in Spanish) I solved it by contacting the author of `remind`, Dianne Skoll, who was kind enough to answer my emails and propose me a couple of alternative solutions reflected in my script https://github.com/juacq97/dotfiles/blob/master/.local/bin/rem2pdf [rem2pdf] (I know it's not very elegant but, hey, it works!) so I can show those accents and "ñ" in all its glory.
+
+Finally exploring F-droid I found https://f-droid.org/en/packages/at.bitfire.icsdroid[ICSx^5^], an app that does just what I needed: synchronize an ICS file and add its content to the calendar,which for my fortune allows to connect to a webDAV server. With this I can have my calendar synchronized on my laptop and my cell phone, although it's true that it's only one-way, but the work topics (and what I'm most interested in having synchronized) I manage from the laptop, so I can live with that.
+
+== And... does it work for you?
+
+The answer is yes, although I still have to struggle with the main reason why the _bujo_ failed: laziness. I have begun to introduce other methodologies such as "Eat the frog" in the hope of fighting this problem, but I believe that it is something that no system of productivity will help me with. 
+
+But as far as the organization is concerned, it works quite well, I'm very happy with the tools I use, and although I don't expect anyone with any common sense to adopt it (who in their right mind wants to be editing text files when they can press icons on the screen?) they are working very well for me, I've even recovered the contexts and projects that I removed with the _bujo_ and that are very useful for filtering tasks. I hope this will be the ultimate _red pill_ in terms of organization, and that it will continue to help me, even when we return to a presential environment.

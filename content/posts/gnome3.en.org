@@ -1,4 +1,4 @@
-#+TITLE:Why I changed to GNOME and what the hell I was thinking
+#+TITLE: Why I changed to GNOME and what the hell I was thinking
 #+DATE: 2020-10-19
 #+PUBLISHDATE: 2020-10-19
 #+DRAFT: nil

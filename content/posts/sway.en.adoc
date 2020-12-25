@@ -1,0 +1,83 @@
+---
+title: "I've migrated to Wayland!"
+date: "2020-12-24"
+draft: false
+translationkey: sway
+categories: ["linux,sway,wayland"]
+---
+
+After a long time reading about Wayland, how X11 is old and unsafe, how the big DE are adopting it and many other things, I decided to give it a try now that I'm free for the vacations and check out how the world of the future is. TL;DR: the experience is not bad, and in several aspects better than X11, although with its disadvantages that not everyone is willing to accept.
+
+== Why Sway?
+
+I'll skip the part about explaining what Wayland is and its advantages, a quick search explains it to us. What I do want to retrieve here is a brief list of its most noticeable differences that mostly affect the end user, i.e. me:
+
+* Wayland isolates each window, so one application cannot know what is going on in another. This adds security, but can be a disadvantage, because many applications such as color selectors, _screencast_ or `xdotool` style automation do not work.
+* In Wayland the compositor is both the window manager and the server. In other words, the server-client relationship of X does not exist in Wayland. This forces all input and output device configurations to be handled directly by the composer. And unlike X, there is no separation here between window manager and compositor, so no more `picom', and in general, much of the modularity.
+* Wayland has many protocols. GNOME uses its own, KDE uses another one, and many minimalist composers use another one called `wlroots`. As a consequence, some applications do not work in all environments.
+* Native X applications do not work in Wayland, at least not all of them and not in the expected way, which implies getting a new set of tools.
+
+Now, why sway? Unlike X11, where there are a lot of Window Managers, in Wayland there are few compositors, and many of them are either abandoned or very inmature. Of course I'm aware of https://github.com/WayfireWM/wayfire [WayFire] and https://github.com/ifreund/river [River], but Sway is one of the most complete projects with the largest number of users, and much of the independent development in Wayland is focused on Sway, so if I want to have the best support available so far without using GNOME again, Sway is the option.
+
+Sway is a compositor that works practically the same as i3wm... More disadvantages!, as I prefer the dwm's automatic tiling to the i3's manual, but it is something that, later on I will comment, I am coping with.
+
+== Life in Wayland
+
+To tell the truth and with "normal" use, the difference is minimal, imperceptible most of the time. Most applications work fine, as if nothing had happened, even those that are not native and work through an emulation layer called `Xwayland`. The biggest obstacles so far have been finding replacements for the applications I used, and sway itself. 
+
+As I said at the beginning, I am not very used to manual tiling and at first (and still) I was too confused with the famous i3wm tree order, being aware at all times of what will be the order of the next window, which is parent, which is child, which is part of which container, etc., is confusing. I had to watch a https://www.youtube.com/watch?v=AWA8Pl57UBY [video by the author of i3wm] to half understand how the container thing works.
+
+Once that obstacle is overcome, sway (and by extension, i3) becomes quite interesting and powerful. I can put some windows in tabs (which in dwm I did with the `deck` layout, but here it has steroids) and organize my windows in much more powerful ways than with the predefined dwm layouts. Yes, it's more work and I need to be more aware of how my windows are being arranged, but it's not all bad.
+
+=== What works, what doesn't work, and what works more or less
+
+As I mentioned, the other obstacle I've encountered is finding alternatives to applications I normally use that don't work or don't work well in Wayland. Most of them like alacritty, firefox, LibreOffice, even Electron applications like Spotify or Geogebra work fine. Others definitely don't work since they depend on X11, and some more work more or less and only some features or functions fail.
+
+In the following table I retrieve information about several of these applications, most of which are necessary to have a basic environment.
+
+.Table Applications
+|===
+| X11 application | Wayland application | Notes
+
+| Dmenu, rofi 
+| bmenu, wofi, https://aur.archlinux.org/packages/rofi-lbonn-wayland-git/ [rofi patch]
+| The normal version of `rofi`, as well as `dmenu`, run in Wayland under Xwayland and can bring problems, for example, `dmenu` does not steal the focus as it does on X
+
+| Dunst (notification manager)
+| Mako
+|
+
+| Polybar, dzen2, i3bar, lemonbar
+| waybar, swaybar
+|
+
+| Gcolor2, Gcolor3
+| grim -g "$(slurp -p)" -t ppm - \| convert - -format '%[pixel:p{0.0}]' txt:- \| tail -n 1 
+| Requires to have installed `grim`, `slurp` and `ImageMagick`. Applications color selectors such as GIMP do not work.
+
+| lxappearance
+| gsettings
+| Since I already had my GTK settings in `~/.config/gtk-3.0/settings.ini` I used the script that comes in https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland#setting-values-in-gsettings [the sway wiki]
+
+| ffmpeg, obs, simplescreenrecorder
+| wf-recorder, obs+wlrobs
+| There is no way to record one window yet because of the way Wayland works. Using `wf-recorder` together with `v4l2loopback` I managed to project my screen in Zoom as a secondary camera.
+
+| Scrot, flameshot
+| Grim, grim+slurp, grimshot, swappy
+| Both `grimshot` and `swappy` are combinations of `grim` and `slurp` with some extra additions.
+
+| Native X applications (xrandr, xsetroot, xmodmap, etc.)
+| No or directly by the composer
+|
+
+|===
+
+A list with more applications can be found https://github.com/swaywm/sway/wiki/i3-Migration-Guide [here].
+
+== The future of Wayland
+
+At the moment, Wayland and Sway are usable. However, there are several annoyances about Wayland that not everyone will accept, either because they are very used to a certain _workflow_ or because they require it, such as screen recording, lack of modularity, little interoperability between compositors and lack of a standard, among others. I thought about writing a bit about this, but https://kirby.kevinson.org/blog/things-wrong-with-wayland/ [Kriby Kevinson already did], I recommend reading his blog.
+I am personally concerned about the fact that GNOME and KDE seem to be using their own protocols, which forces us to use the native applications of those environments or use their protocols if we want our programs to work with them.  This would cause many applications not to work with independent composers like Sway, or developers to have to decide whether to make their program compatible with `wl-roots', GNOME or Plasma, and the latter two would probably win. Consequently, the prophecy I read in /g/ would be fulfilled: Wayland would be the end of independent window managers and Linux would only work with complete Desktop Environments. I really hope that this doesn't happen and standardize protocols that everyone can use as X11 does.
+
+In the meantime I will enjoy Sway as much as possible. I don't know if I will come back to X11 and dwm soon. If I run into any problems that prevent me from doing my job I will, if not I think I will stay here, who knows? maybe my experience will help shape the future of the Linux desktop!
